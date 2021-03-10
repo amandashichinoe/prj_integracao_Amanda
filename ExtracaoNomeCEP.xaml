@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Sequência" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1045,3503" sap2010:WorkflowViewState.IdRef="Sequência_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Sequência" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1045,3565" sap2010:WorkflowViewState.IdRef="Sequência_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -64,7 +64,7 @@
       <AssemblyReference>CustomInputForm</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="981,3338" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="981,3400" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="https://buscacepinter.correios.com.br/app/faixa_cep_uf_localidade/index.php" Name="URLBuscaCEP" />
       <Variable x:TypeArguments="ui:Browser" Name="Navegador" />
@@ -74,13 +74,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="939,3246" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[Navegador]" Url="[URLBuscaCEP]">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="939,3308" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[Navegador]" Url="[URLBuscaCEP]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do - Busca e Extração de nome e CEP" sap:VirtualizedContainerService.HintSize="905,3145" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="Do - Busca e Extração de nome e CEP" sap:VirtualizedContainerService.HintSize="905,3207" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="CidadesSulMG" />
               <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
@@ -273,7 +273,8 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEachRow>
-            <If sap2010:Annotation.AnnotationText="Verifica o número de cidades e ajusta a quantidade, caso necessário, para que a quantidade de cidades seja igual a 100.&#xD;&#xA;Se o número de cidades filtradas anteriormente é menor que 100, refiltra os dados para incluir mais cidades." Condition="[CidadesSulMG.Rows.Count &lt; 100]" DisplayName="If - Número de cidades" sap:VirtualizedContainerService.HintSize="863,703" sap2010:WorkflowViewState.IdRef="If_1">
+            <ui:RemoveDuplicateRows DataTable="[CidadesSulMG]" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="863,22" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_1" OutputDataTable="[CidadesSulMG]" />
+            <If sap2010:Annotation.AnnotationText="Verifica o número de cidades e ajusta a quantidade, caso necessário, para que a quantidade de cidades seja igual a 100.&#xA;Se o número de cidades filtradas anteriormente é menor que 100, refiltra os dados para incluir mais cidades." Condition="[CidadesSulMG.Rows.Count &lt; 100]" DisplayName="If - Número de cidades" sap:VirtualizedContainerService.HintSize="863,703" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -314,7 +315,7 @@
                 </ui:FilterDataTable>
               </If.Then>
               <If.Else>
-                <If sap2010:Annotation.AnnotationText="Senão, se o número de cidades for maior que 100, remove as linhas até que a quantidade seja 100&#xD;&#xA;" Condition="[CidadesSulMG.Rows.Count &gt; 100]" sap:VirtualizedContainerService.HintSize="484,514" sap2010:WorkflowViewState.IdRef="If_2">
+                <If sap2010:Annotation.AnnotationText="Senão, se o número de cidades for maior que 100, remove as linhas até que a quantidade seja 100&#xA;" Condition="[CidadesSulMG.Rows.Count &gt; 100]" sap:VirtualizedContainerService.HintSize="484,514" sap2010:WorkflowViewState.IdRef="If_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -354,7 +355,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:WriteCsvFile>
-            <ui:WriteRange AddHeaders="True" sap2010:Annotation.AnnotationText="Escreve os dados extraídos em um arquivo .xlsx&#xD;&#xA;" DataTable="[CidadesSulMG]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="863,157" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" StartingCell="A1" WorkbookPath="CidadesCEP.xlsx">
+            <ui:WriteRange AddHeaders="True" sap2010:Annotation.AnnotationText="Escreve os dados extraídos em um arquivo .xlsx&#xA;" DataTable="[CidadesSulMG]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="863,157" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" StartingCell="A1" WorkbookPath="CidadesCEP.xlsx">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
