@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Sequência" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1045,3565" sap2010:WorkflowViewState.IdRef="Sequência_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Sequência" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1045,3695" sap2010:WorkflowViewState.IdRef="Sequência_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -62,9 +62,16 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>CustomInputForm</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="981,3400" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="630,3530" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="https://buscacepinter.correios.com.br/app/faixa_cep_uf_localidade/index.php" Name="URLBuscaCEP" />
       <Variable x:TypeArguments="ui:Browser" Name="Navegador" />
@@ -74,13 +81,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="939,3308" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[Navegador]" Url="[URLBuscaCEP]">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="588,3438" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[Navegador]" Url="[URLBuscaCEP]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do - Busca e Extração de nome e CEP" sap:VirtualizedContainerService.HintSize="905,3207" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="Do - Busca e Extração de nome e CEP" sap:VirtualizedContainerService.HintSize="554,3337" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="CidadesSulMG" />
               <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
@@ -91,8 +98,8 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="863,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item - UF" sap:VirtualizedContainerService.HintSize="863,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="MG">
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="512,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item - UF" sap:VirtualizedContainerService.HintSize="512,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="MG">
               <ui:SelectItem.Items>
                 <scg:List x:TypeArguments="x:String" Capacity="32">
                   <x:String>Selecione</x:String>
@@ -136,7 +143,7 @@
                 </ui:Target>
               </ui:SelectItem.Target>
             </ui:SelectItem>
-            <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="3000" DisplayName="Click - Buscar" sap:VirtualizedContainerService.HintSize="863,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="3000" DisplayName="Click - Buscar" sap:VirtualizedContainerService.HintSize="512,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -158,7 +165,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" sap2010:Annotation.AnnotationText="Verifica se apareceu a tabela com os resultados." DisplayName="Find Element - Tabela" sap:VirtualizedContainerService.HintSize="863,137" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+            <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" sap2010:Annotation.AnnotationText="Verifica se apareceu a tabela com os resultados." DisplayName="Find Element - Tabela" sap:VirtualizedContainerService.HintSize="512,137" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
               <ui:WaitUiElementAppear.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fdf077ee-24e8-4933-880c-f003be5a9ee7" InformativeScreenshot="80233dbc8dfff6a46beae92ab9bfb0c7" Selector="&lt;webctrl id='resultado-DNEC' tag='TABLE' /&gt;&lt;webctrl aaname='Localidade' tag='TH' /&gt;">
                   <ui:Target.TimeoutMS>
@@ -175,7 +182,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:WaitUiElementAppear>
-            <ui:InterruptibleDoWhile sap2010:Annotation.AnnotationText="Tenta executar a extração de dados até que a tabela apareça." DisplayName="Do While" sap:VirtualizedContainerService.HintSize="863,656" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+            <ui:InterruptibleDoWhile sap2010:Annotation.AnnotationText="Tenta executar a extração de dados até que a tabela apareça." DisplayName="Do While" sap:VirtualizedContainerService.HintSize="512,656" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
               <ui:InterruptibleDoWhile.Body>
                 <Sequence sap2010:Annotation.AnnotationText="Extrai Nome e CEP de todas as cidades do estado de MG" DisplayName="Extração de Dados - NOME e CEP" sap:VirtualizedContainerService.HintSize="476,460" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
@@ -225,7 +232,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InterruptibleDoWhile>
-            <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filtra cidades cujo CEP inicia com &quot;37&quot;, pois são cidades do sul de MG" DataTable="[ExtractDataTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="863,101" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[CidadesSulMG]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filtra cidades cujo CEP inicia com &quot;37&quot;, pois são cidades do sul de MG" DataTable="[ExtractDataTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="512,101" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[CidadesSulMG]" SelectColumnsMode="Keep">
               <ui:FilterDataTable.Filters>
                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                   <ui:FilterOperationArgument BooleanOperator="And" Operator="STARTSWITH">
@@ -251,7 +258,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:FilterDataTable>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Mantém somente o primeiro CEP do intervalo para cada cidade" DataTable="[CidadesSulMG]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="863,432" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Mantém somente o primeiro CEP do intervalo para cada cidade" DataTable="[CidadesSulMG]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="512,432" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
@@ -273,8 +280,8 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEachRow>
-            <ui:RemoveDuplicateRows DataTable="[CidadesSulMG]" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="863,22" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_1" OutputDataTable="[CidadesSulMG]" />
-            <If sap2010:Annotation.AnnotationText="Verifica o número de cidades e ajusta a quantidade, caso necessário, para que a quantidade de cidades seja igual a 100.&#xA;Se o número de cidades filtradas anteriormente é menor que 100, refiltra os dados para incluir mais cidades." Condition="[CidadesSulMG.Rows.Count &lt; 100]" DisplayName="If - Número de cidades" sap:VirtualizedContainerService.HintSize="863,703" sap2010:WorkflowViewState.IdRef="If_1">
+            <ui:RemoveDuplicateRows DataTable="[CidadesSulMG]" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="512,22" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_1" OutputDataTable="[CidadesSulMG]" />
+            <If sap2010:Annotation.AnnotationText="Se o número de cidades filtradas anteriormente é menor que 100, refiltra os dados para incluir mais cidades." Condition="[CidadesSulMG.Rows.Count &lt; 100]" DisplayName="If - Número de cidades" sap:VirtualizedContainerService.HintSize="512,279" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -314,55 +321,53 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:FilterDataTable>
               </If.Then>
-              <If.Else>
-                <If sap2010:Annotation.AnnotationText="Senão, se o número de cidades for maior que 100, remove as linhas até que a quantidade seja 100&#xA;" Condition="[CidadesSulMG.Rows.Count &gt; 100]" sap:VirtualizedContainerService.HintSize="484,514" sap2010:WorkflowViewState.IdRef="If_2">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <If.Then>
-                    <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="Remove cidades até que o número de cidades seja 100" DisplayName="While" sap:VirtualizedContainerService.HintSize="334,310" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
-                      <ui:InterruptibleWhile.Body>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:RemoveDataRow Row="{x:Null}" DataTable="[CidadesSulMG]" DisplayName="Remove Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="RemoveDataRow_1" RowIndex="[CidadesSulMG.Rows.Count - 1]" />
-                        </Sequence>
-                      </ui:InterruptibleWhile.Body>
-                      <ui:InterruptibleWhile.Condition>
-                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CidadesSulMG.Rows.Count &gt; 100" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
-                      </ui:InterruptibleWhile.Condition>
+            </If>
+            <If sap2010:Annotation.AnnotationText="Senão, se o número de cidades for maior que 100, remove as linhas até que a quantidade seja 100&#xA;" Condition="[CidadesSulMG.Rows.Count &gt; 100]" sap:VirtualizedContainerService.HintSize="512,514" sap2010:WorkflowViewState.IdRef="If_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="Remove cidades até que o número de cidades seja 100" DisplayName="While" sap:VirtualizedContainerService.HintSize="334,310" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                  <ui:InterruptibleWhile.Body>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </ui:InterruptibleWhile>
-                  </If.Then>
-                </If>
-              </If.Else>
+                      <ui:RemoveDataRow Row="{x:Null}" DataTable="[CidadesSulMG]" DisplayName="Remove Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="RemoveDataRow_1" RowIndex="[CidadesSulMG.Rows.Count - 1]" />
+                    </Sequence>
+                  </ui:InterruptibleWhile.Body>
+                  <ui:InterruptibleWhile.Condition>
+                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CidadesSulMG.Rows.Count &gt; 100" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
+                  </ui:InterruptibleWhile.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InterruptibleWhile>
+              </If.Then>
             </If>
-            <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" sap2010:Annotation.AnnotationText="Escreve os dados extraídos em um arquivo .csv" DataTable="[CidadesSulMG]" Delimitator="Semicolon" DisplayName="Write CSV" FilePath="CidadesCEP.csv" sap:VirtualizedContainerService.HintSize="863,183" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1">
+            <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" sap2010:Annotation.AnnotationText="Escreve os dados extraídos em um arquivo .csv" DataTable="[CidadesSulMG]" Delimitator="Semicolon" DisplayName="Write CSV" FilePath="CidadesCEP.csv" sap:VirtualizedContainerService.HintSize="512,183" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:WriteCsvFile>
-            <ui:WriteRange AddHeaders="True" sap2010:Annotation.AnnotationText="Escreve os dados extraídos em um arquivo .xlsx&#xA;" DataTable="[CidadesSulMG]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="863,157" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" StartingCell="A1" WorkbookPath="CidadesCEP.xlsx">
+            <ui:WriteRange AddHeaders="True" sap2010:Annotation.AnnotationText="Escreve os dados extraídos em um arquivo .xlsx&#xA;" DataTable="[CidadesSulMG]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="512,157" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" StartingCell="A1" WorkbookPath="CidadesCEP.xlsx">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:WriteRange>
-            <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="863,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+            <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="512,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
           </Sequence>
         </ActivityAction>
       </ui:OpenBrowser.Body>
